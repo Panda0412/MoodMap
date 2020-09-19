@@ -1,6 +1,7 @@
 import React from 'react';
-import MapView from 'react-native-maps';
+import MapView, {Marker} from 'react-native-maps';
 import {StatusBar, StyleSheet} from 'react-native';
+import markers from './markers';
 
 const mapStyle = [
   {
@@ -175,8 +176,16 @@ export default function Map({navigation}) {
           longitude: 30.315019,
           latitudeDelta: 0.1844,
           longitudeDelta: 0.0842,
-        }}
-      />
+        }}>
+        {markers.map((marker, index) => (
+          <Marker
+            key={index}
+            coordinate={marker.coordinate}
+            title={marker.moodName}
+            description={marker.moodEmoji}
+          />
+        ))}
+      </MapView>
     </>
   );
 }
