@@ -163,7 +163,7 @@ const mapStyle = [
   },
 ];
 
-export default function Map() {
+export default function Map({navigation}) {
   return (
     <>
       <StatusBar backgroundColor="white" barStyle="dark-content" />

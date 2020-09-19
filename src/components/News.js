@@ -10,7 +10,7 @@ import {
   StyleSheet,
 } from 'react-native';
 
-export default function News() {
+export default function News({navigation}) {
   return (
     <>
       <StatusBar backgroundColor="white" barStyle="dark-content" />
@@ -92,12 +92,13 @@ export default function News() {
           <Text style={styles.bottomText}>Профиль</Text>
         </View>
       </View>
-      <View style={{backgroundColor: 'rgba(255,255,255,0)'}}>
+      <View>
         <TouchableOpacity
           style={{
             marginTop: -104,
             marginLeft: Dimensions.get('window').width - 52,
-          }}>
+          }}
+          onPress={() => navigation.navigate('Map')}>
           <Image source={require('../icons/globe.png')} />
         </TouchableOpacity>
       </View>

@@ -1,8 +1,8 @@
 import React from 'react';
-import News from './src/components/News';
+import AppNavigation from './src/components/AppNavigation';
 
 const App = () => {
-  return <News />;
+  return <AppNavigation />;
 };
 
 export default App;
