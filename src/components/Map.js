@@ -1,11 +1,16 @@
 import React from 'react';
 import MapView, {Marker} from 'react-native-maps';
-import {StatusBar, StyleSheet} from 'react-native';
-import markers from './markers';
 import {
   StatusBar,
   StyleSheet,
+  Image,
+  ScrollView,
+  Text,
+  View,
+  TouchableOpacity,
 } from 'react-native';
+import Topics from './Topics';
+import markers from './markers';
 
 const mapStyle = [
   {
@@ -190,8 +195,6 @@ export default function Map({navigation}) {
           />
         ))}
       </MapView>
-        }}
-      />
       <TouchableOpacity
         style={{
           position: 'absolute',
