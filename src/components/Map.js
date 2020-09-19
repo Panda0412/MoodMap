@@ -11,6 +11,7 @@ import {
 } from 'react-native';
 import Topics from './Topics';
 import markers from './markers';
+import MoodMarker from "./MoodMarker";
 
 const mapStyle = [
   {
@@ -187,11 +188,9 @@ export default function Map({navigation}) {
           longitudeDelta: 0.0842,
         }}>
         {markers.map((marker, index) => (
-          <Marker
+          <MoodMarker
             key={index}
-            coordinate={marker.coordinate}
-            title={marker.moodName}
-            description={marker.moodEmoji}
+            {...marker}
           />
         ))}
       </MapView>
