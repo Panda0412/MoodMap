@@ -1,12 +1,15 @@
 import React from 'react';
 import MapView from 'react-native-maps';
 import {
+  View,
   StatusBar,
   TouchableOpacity,
-  Dimensions,
   Image,
+  Text,
+  ScrollView,
   StyleSheet,
 } from 'react-native';
+import Topics from './Topics';
 
 const mapStyle = [
   {
@@ -185,12 +188,22 @@ export default function Map({navigation}) {
       />
       <TouchableOpacity
         style={{
-          marginTop: 8,
-          marginLeft: Dimensions.get('window').width - 44,
+          position: 'absolute',
+          top: 8,
+          right: 12,
         }}
         onPress={() => navigation.navigate('News')}>
         <Image source={require('../icons/cross.png')} />
       </TouchableOpacity>
+      <View
+        style={{flex: 1, flexDirection: 'column', justifyContent: 'flex-end'}}>
+        <Text style={styles.title}>Темы</Text>
+        <ScrollView
+          horizontal={true}
+          style={{maxHeight: 96, backgroundColor: '#fff'}}>
+          <Topics />
+        </ScrollView>
+      </View>
     </>
   );
 }
@@ -198,5 +211,14 @@ export default function Map({navigation}) {
 const styles = StyleSheet.create({
   map: {
     ...StyleSheet.absoluteFillObject,
+  },
+  title: {
+    fontFamily: 'Roboto',
+    fontWeight: '500',
+    fontSize: 23,
+    lineHeight: 28,
+    letterSpacing: 0.2,
+    color: '#818C99',
+    backgroundColor: '#fff',
   },
 });
