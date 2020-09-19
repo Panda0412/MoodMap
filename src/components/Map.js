@@ -1,6 +1,12 @@
 import React from 'react';
 import MapView from 'react-native-maps';
-import {StatusBar, StyleSheet} from 'react-native';
+import {
+  StatusBar,
+  TouchableOpacity,
+  Dimensions,
+  Image,
+  StyleSheet,
+} from 'react-native';
 
 const mapStyle = [
   {
@@ -177,6 +183,14 @@ export default function Map({navigation}) {
           longitudeDelta: 0.0842,
         }}
       />
+      <TouchableOpacity
+        style={{
+          marginTop: 8,
+          marginLeft: Dimensions.get('window').width - 44,
+        }}
+        onPress={() => navigation.navigate('News')}>
+        <Image source={require('../icons/cross.png')} />
+      </TouchableOpacity>
     </>
   );
 }
