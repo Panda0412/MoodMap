@@ -1,12 +1,8 @@
 import React from 'react';
 import {
-  StatusBar,
   View,
   Image,
   Text,
-  ScrollView,
-  TouchableOpacity,
-  Dimensions,
   StyleSheet,
 } from 'react-native';
 
