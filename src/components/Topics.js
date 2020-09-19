@@ -1,56 +1,80 @@
 import React from 'react';
-import {
-  View,
-  Image,
-  Text,
-  StyleSheet,
-} from 'react-native';
+import {View, Text, StyleSheet} from 'react-native';
 
-export default function Topics({navigation}) {
+function Circle(props) {
+  return (
+    <View
+      style={{
+        width: 64,
+        height: 64,
+        borderWidth: 0.5,
+        borderStyle: 'solid',
+        borderColor: 'rgba(0, 0, 0, 0.14)',
+        borderRadius: 32,
+        justifyContent: 'center',
+        alignItems: 'center',
+      }}>
+      <Text
+        style={{
+          fontFamily: 'Roboto',
+          fontWeight: '900',
+          fontSize: 24,
+          lineHeight: 28,
+          textAlign: 'center',
+          letterSpacing: 0.326451,
+          color: '#000',
+        }}>
+        {props.sticker}
+      </Text>
+    </View>
+  );
+}
+
+export default function Topics() {
   return (
     <View style={styles.topicsList}>
       <View style={styles.topic}>
-        <Image source={require('../topics/music.png')} />
+        <Circle sticker="🎧" />
         <Text style={styles.topicName}>Музыка</Text>
       </View>
       <View style={styles.topic}>
-        <Image source={require('../topics/movies.png')} />
+        <Circle sticker="🍿" />
         <Text style={styles.topicName}>Фильмы</Text>
       </View>
       <View style={styles.topic}>
-        <Image source={require('../topics/autumn.png')} />
+        <Circle sticker="🍂" />
         <Text style={styles.topicName}>Осень</Text>
       </View>
       <View style={styles.topic}>
-        <Image source={require('../topics/work.png')} />
+        <Circle sticker="👔" />
         <Text style={styles.topicName}>Работа</Text>
       </View>
       <View style={styles.topic}>
-        <Image source={require('../topics/quarantine.png')} />
+        <Circle sticker="😷" />
         <Text style={styles.topicName}>Карантин</Text>
       </View>
       <View style={styles.topic}>
-        <Image source={require('../topics/IT.png')} />
+        <Circle sticker="💻" />
         <Text style={styles.topicName}>IT</Text>
       </View>
       <View style={styles.topic}>
-        <Image source={require('../topics/cars.png')} />
+        <Circle sticker="🚗" />
         <Text style={styles.topicName}>Авто</Text>
       </View>
       <View style={styles.topic}>
-        <Image source={require('../topics/games.png')} />
+        <Circle sticker="🕹️" />
         <Text style={styles.topicName}>Игры</Text>
       </View>
       <View style={styles.topic}>
-        <Image source={require('../topics/art.png')} />
+        <Circle sticker="🎨" />
         <Text style={styles.topicName}>Искусство</Text>
       </View>
       <View style={styles.topic}>
-        <Image source={require('../topics/humor.png')} />
+        <Circle sticker="🎭" />
         <Text style={styles.topicName}>Юмор</Text>
       </View>
       <View style={styles.topic}>
-        <Image source={require('../topics/photos.png')} />
+        <Circle sticker="📷" />
         <Text style={styles.topicName}>Фотографии</Text>
       </View>
     </View>
@@ -60,9 +84,9 @@ export default function Topics({navigation}) {
 const styles = StyleSheet.create({
   topicsList: {
     width: 888,
-    // height: 96,
     flexDirection: 'row',
     justifyContent: 'center',
+    marginBottom: 4,
   },
   topic: {
     width: 80,
