@@ -1,5 +1,4 @@
-import React from 'react';
-import MapView from 'react-native-maps';
+import React, {useRef} from 'react';
 import {
   Image,
   ScrollView,
@@ -13,24 +12,71 @@ import Topics from './Topics';
 import markers from './markers';
 import MoodMarker from './MoodMarker';
 import mapStyle from './mapStyle';
+import ClusteredMapView from 'react-native-maps-super-cluster';
 
 export default function Map({navigation}) {
+  const map = useRef(null);
   return (
     <>
       <StatusBar backgroundColor="white" barStyle="dark-content" />
-      <MapView
+      <ClusteredMapView
+        data={markers}
+        ref={map}
         style={styles.map}
         customMapStyle={mapStyle}
-        region={{
+        initialRegion={{
           latitude: 59.93959,
           longitude: 30.315019,
           latitudeDelta: 0.1844,
           longitudeDelta: 0.0842,
+        }}
+        renderMarker={(data) => (
+          <MoodMarker
+            key={data.id || Math.random()}
+            {...data}
+            coordinate={data.location}
+          />
+        )}
+        renderCluster={(cluster) => {
+          const clusteringEngine = map.current.getClusteringEngine(),
+            clusteredPoints = clusteringEngine.getLeaves(
+              cluster.clusterId,
+              100,
+            );
+
+          const pointsData = clusteredPoints.map((i) => i.properties.item);
+          const moodNamesWithEmoji = pointsData.reduce((acc, val) => {
+            acc[val.moodName] = val.moodEmoji;
+            return acc;
+          }, {});
+
+          const moodsWithCount = pointsData.reduce((acc, val) => {
+            if (acc[val.moodName] !== undefined) {
+              acc[val.moodName]++;
+            } else {
+              acc[val.moodName] = 0;
+            }
+            return acc;
+          }, {});
+
+          const maxMood = Object.entries(moodsWithCount)
+            .sort((a, b) => b[1] - a[1])
+            .shift()
+            .shift();
+
+          return (
+            <MoodMarker
+              key={cluster.id}
+              coordinate={cluster.coordinate}
+              moodName={maxMood}
+              moodEmoji={moodNamesWithEmoji[maxMood]}
+            />
+          );
         }}>
-        {markers.map((marker, index) => (
-          <MoodMarker key={index} {...marker} />
-        ))}
-      </MapView>
+        {/*{markers.map((marker, index) => (*/}
+        {/*  <MoodMarker key={index} {...marker} />*/}
+        {/*))}*/}
+      </ClusteredMapView>
       <TouchableOpacity
         style={{
           position: 'absolute',

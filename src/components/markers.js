@@ -1,7 +1,7 @@
 import geoJSON from '../geo.json';
 
 export default geoJSON.features.map((feature) => ({
-  coordinate: {
+  location: {
     latitude: feature.geometry.coordinates[1],
     longitude: feature.geometry.coordinates[0],
   },
