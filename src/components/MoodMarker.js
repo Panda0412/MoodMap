@@ -5,9 +5,6 @@ import {Marker} from 'react-native-maps';
 const styles = StyleSheet.create({
   marker: {
     backgroundColor: '#fff',
-    width: 40,
-    height: 40,
-    borderRadius: 40 / 2,
 
     flex: 1,
     justifyContent: 'center',
@@ -22,11 +19,28 @@ const styles = StyleSheet.create({
 });
 
 export default function MoodMarker(props) {
+  const radius = 20 * Math.sqrt(props.count);
   return (
     <Marker {...props}>
-      <View style={styles.marker}>
-        <Text style={styles.text}>{props.moodEmoji}</Text>
+      <View
+        style={{
+          ...styles.marker,
+          width: radius * 2,
+          height: radius * 2,
+          borderRadius: radius,
+        }}>
+        <Text
+          style={{
+            ...styles.text,
+            fontSize: radius,
+          }}>
+          {props.moodEmoji}
+        </Text>
       </View>
     </Marker>
   );
 }
+
+MoodMarker.defaultProps = {
+  count: 1,
+};

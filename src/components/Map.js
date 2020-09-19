@@ -60,9 +60,8 @@ export default function Map({navigation}) {
             return acc;
           }, {});
 
-          const maxMood = Object.entries(moodsWithCount)
+          const [maxMood, maxMoodCount] = Object.entries(moodsWithCount)
             .sort((a, b) => b[1] - a[1])
-            .shift()
             .shift();
 
           return (
@@ -71,6 +70,7 @@ export default function Map({navigation}) {
               coordinate={cluster.coordinate}
               moodName={maxMood}
               moodEmoji={moodNamesWithEmoji[maxMood]}
+              count={maxMoodCount}
             />
           );
         }}>
