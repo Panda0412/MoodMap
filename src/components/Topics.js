@@ -1,10 +1,5 @@
 import React from 'react';
-import {
-  View,
-  Image,
-  Text,
-  StyleSheet,
-} from 'react-native';
+import {View, Text, StyleSheet} from 'react-native';
 
 function Circle(props) {
   return (
@@ -29,57 +24,57 @@ function Circle(props) {
           letterSpacing: 0.326451,
           color: '#000',
         }}>
-        {props.emoji}
+        {props.sticker}
       </Text>
     </View>
   );
 }
 
-export default function Topics({navigation}) {
+export default function Topics() {
   return (
     <View style={styles.topicsList}>
       <View style={styles.topic}>
-        <Circle emoji="🎧" />
+        <Circle sticker="🎧" />
         <Text style={styles.topicName}>Музыка</Text>
       </View>
       <View style={styles.topic}>
-        <Circle emoji="🍿" />
+        <Circle sticker="🍿" />
         <Text style={styles.topicName}>Фильмы</Text>
       </View>
       <View style={styles.topic}>
-        <Circle emoji="🍂" />
+        <Circle sticker="🍂" />
         <Text style={styles.topicName}>Осень</Text>
       </View>
       <View style={styles.topic}>
-        <Circle emoji="👔" />
+        <Circle sticker="👔" />
         <Text style={styles.topicName}>Работа</Text>
       </View>
       <View style={styles.topic}>
-        <Circle emoji="😷" />
+        <Circle sticker="😷" />
         <Text style={styles.topicName}>Карантин</Text>
       </View>
       <View style={styles.topic}>
-        <Circle emoji="💻" />
+        <Circle sticker="💻" />
         <Text style={styles.topicName}>IT</Text>
       </View>
       <View style={styles.topic}>
-        <Circle emoji="🚗" />
+        <Circle sticker="🚗" />
         <Text style={styles.topicName}>Авто</Text>
       </View>
       <View style={styles.topic}>
-        <Circle emoji="🕹️" />
+        <Circle sticker="🕹️" />
         <Text style={styles.topicName}>Игры</Text>
       </View>
       <View style={styles.topic}>
-        <Circle emoji="🎨" />
+        <Circle sticker="🎨" />
         <Text style={styles.topicName}>Искусство</Text>
       </View>
       <View style={styles.topic}>
-        <Circle emoji="🎭" />
+        <Circle sticker="🎭" />
         <Text style={styles.topicName}>Юмор</Text>
       </View>
       <View style={styles.topic}>
-        <Circle emoji="📷" />
+        <Circle sticker="📷" />
         <Text style={styles.topicName}>Фотографии</Text>
       </View>
     </View>
@@ -89,9 +84,9 @@ export default function Topics({navigation}) {
 const styles = StyleSheet.create({
   topicsList: {
     width: 888,
-    // height: 96,
     flexDirection: 'row',
     justifyContent: 'center',
+    marginBottom: 4,
   },
   topic: {
     width: 80,

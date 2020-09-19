@@ -9,6 +9,7 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
+import Emojies from './Emojies';
 import Topics from './Topics';
 import markers from './markers';
 import MoodMarker from './MoodMarker';
@@ -42,12 +43,16 @@ export default function Map({navigation}) {
       </TouchableOpacity>
       <View
         style={{flex: 1, flexDirection: 'column', justifyContent: 'flex-end'}}>
-        <Text style={styles.title}>Темы</Text>
-        <ScrollView
-          horizontal={true}
-          style={{maxHeight: 96, backgroundColor: '#fff'}}>
-          <Topics />
-        </ScrollView>
+        <View style={{backgroundColor: '#fff', paddingLeft: 8}}>
+          <Text style={styles.title}>Эмоции</Text>
+          <ScrollView horizontal={true} style={{maxHeight: 40}}>
+            <Emojies />
+          </ScrollView>
+          <Text style={styles.title}>Темы</Text>
+          <ScrollView horizontal={true} style={{maxHeight: 96}}>
+            <Topics />
+          </ScrollView>
+        </View>
       </View>
     </>
   );
@@ -64,6 +69,8 @@ const styles = StyleSheet.create({
     lineHeight: 28,
     letterSpacing: 0.2,
     color: '#818C99',
-    backgroundColor: '#fff',
+    marginTop: 12,
+    marginBottom: 6,
+    marginLeft: 8,
   },
 });
